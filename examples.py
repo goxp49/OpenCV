@@ -4,7 +4,7 @@ import os
 
 #========================================== 生成灰度和色彩图片==========================================
 def example_1():
-    numpyArray = numpy.random.randint(0, 255, 120000)
+    numpyArray = np.random.randint(0, 255, 120000)
 
     # creat gray image
     grayImage = numpyArray.reshape(300, 400)
