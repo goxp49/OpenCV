@@ -41,10 +41,12 @@ def example_3():
 #========================================== 追踪视频左上角的物体 ==========================================
 def example_4():
     # 设置初始化的窗口位置
-    r,h,c,w = 0,100,0,100 # 设置初试窗口位置和大小
+    r,h,c,w = 0,300,0,300 # 设置初试窗口位置和大小
     track_window = (c,r,w,h)
 
     cap = cv2.VideoCapture(0)
+    cap.set(cv2.CAP_PROP_FRAME_WIDTH, 1280)
+    cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 720)
     print(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
     print(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
 
@@ -86,6 +88,8 @@ def example_4():
     cap.release()
     cv2.destroyAllWindows()
 
+#========================================== 基于FLANN特征匹配 ==========================================
+def example_5():
 
 
 
