@@ -1,5 +1,6 @@
 import cv2
 import numpy as np
+from matplotlib import pyplot as plt
 import os
 
 #========================================== 生成灰度和色彩图片==========================================
@@ -88,10 +89,25 @@ def example_4():
     cap.release()
     cv2.destroyAllWindows()
 
-#========================================== 基于FLANN特征匹配 ==========================================
+#========================================== 基于ORB特征匹配 ==========================================
 def example_5():
+    img1 = cv2.imread('./feature_detection/icon.jpg', cv2.IMREAD_GRAYSCALE)
+    img2 = cv2.imread('./feature_detection/logo.jpg', cv2.IMREAD_GRAYSCALE)
 
+    orb = cv2.ORB_create()
+    kp1, des1 = orb.detectAndCompute(img1, None)
+    kp2, des2 = orb.detectAndCompute(img2, None)
+    # 使用暴力匹配
+    bf = cv2.BFMatcher(cv2.NORM_HAMMING, crossCheck=True)
+    matches = bf.match(des1, des2)
+    matches = sorted(matches, key=lambda x: x.distance)
+    img3 = cv2.drawMatches(img1, kp1, img2, kp2, matches[:40], img2, flags=cv2.DrawMatchesFlags_NOT_DRAW_SINGLE_POINTS)
+    plt.imshow(img3)
+    plt.show()
+
+
+# ========================================== 基于FLANN特征匹配 ==========================================
 
 
 if __name__ == "__main__":
-    example_4()
+    example_5()
