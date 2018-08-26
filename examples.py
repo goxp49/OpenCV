@@ -114,7 +114,7 @@ def example_6():
     trainingImage = cv2.imread('feature_detection/test_3.jpg', cv2.IMREAD_GRAYSCALE)
 
     # 创造SIFT并计算出描述符
-    sift = cv2.xfeatures2d.SURF_create()
+    sift = cv2.xfeatures2d.SIFT_create()
     kp1, des1 = sift.detectAndCompute(queryImage, None)
     kp2, des2 = sift.detectAndCompute(trainingImage, None)
 
